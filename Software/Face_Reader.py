@@ -54,11 +54,11 @@ while True:
         for (x, y) in shape:
             contPonto = contPonto + 1
             cv2.circle(faceMapper, (x, y), 2, (0, 255, 0), -1)
-            if shape[38] == shape[40]:
-                mytext = "Olá, mundo!"
-                audio = gTTS(text=mytext, lang="pt-br", slow=False)
-                audio.save("example.mp3")
-                os.system("start example.mp3")
+            # if shape[38] == shape[40]:
+            #     mytext = "Olá, mundo!"
+            #     audio = gTTS(text=mytext, lang="pt-br", slow=False)
+            #     audio.save("example.mp3")
+            #     os.system("start example.mp3")
     
     # Mostre a imagem com os pontos de interesse.
     cv2.imshow("Face Mapper", faceMapper)
