@@ -4,6 +4,8 @@ import dlib
 import cv2
 import PIL.Image
 import numpy as np
+from gtts import gTTS
+import os
  
 p = "Software/Scripts/shape_predictor_68_face_landmarks.dat"
 detector = dlib.get_frontal_face_detector()
@@ -52,7 +54,11 @@ while True:
         for (x, y) in shape:
             contPonto = contPonto + 1
             cv2.circle(faceMapper, (x, y), 2, (0, 255, 0), -1)
-        
+            if shape[38] == shape[40]:
+                mytext = "Olá, mundo!"
+                audio = gTTS(text=mytext, lang="pt-br", slow=False)
+                audio.save("example.mp3")
+                os.system("start example.mp3")
     
     # Mostre a imagem com os pontos de interesse.
     cv2.imshow("Face Mapper", faceMapper)
@@ -61,6 +67,8 @@ while True:
     # if j == 255:
     #     print(rects)   
 
+    
+
     if cv2.waitKey(5) & 0xFF == ord('q'):
         print("37", shape[37])
         print("38", shape[38])
@@ -68,13 +76,27 @@ while True:
         print("40", shape[40])
         print("41", shape[41])
         print("42", shape[42])
+        print(type(shape[37]))
         print("-----------------")
+        # mytext = "Olá, mundo!"
+        # audio = gTTS(text=mytext, lang="pt-br", slow=False)
+        # audio.save("example.mp3")
+        # os.system("start example.mp3")
+        # cwd = os.getcwd()
+        # print(cwd)
+
+        # def etc():
+        #     path = "C:/Users/Arthu/Documents/GitHub/Face-Reader"
+        #     dir = os.listdir(path)
+        #     for file in dir:
+        #         if file == "example.mp3":
+        #             os.remove(file)
 
     k = cv2.waitKey(5) & 0xFF
     if k == 27:
         break
-    
-    
+
+
 
 cv2.destroyAllWindows()
 cap.release()
